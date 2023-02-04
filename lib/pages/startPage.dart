@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octavia_native/pages/homePage.dart';
-class StartPage extends StatelessWidget {
+
+class StartPage extends StatefulWidget {
   const StartPage({Key? key}) : super(key: key);
 
-  void doSomething(BuildContext context){
+  @override
+  State<StartPage> createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  bool isPressed = false;
+
+  void doSomething(BuildContext context) {
+    setState(() {
+      isPressed = true;
+    });
     print("Clickr");
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => HomePage()));
   }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      isPressed=false;
+    });
     return Scaffold(
       backgroundColor: Color.fromARGB(171, 54, 51, 77),
       body: Stack(children: [
@@ -66,7 +82,7 @@ class StartPage extends StatelessWidget {
                             height: 55,
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               doSomething(context);
                             },
                             child: Container(
@@ -75,7 +91,7 @@ class StartPage extends StatelessWidget {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Color.fromARGB(255, 79, 75, 189),
+                                color: (!isPressed)?Color.fromARGB(255, 79, 75, 189):Color.fromARGB(255, 124, 122, 185),
                                 boxShadow: const [
                                   BoxShadow(
                                       color: Color.fromARGB(255, 59, 64, 94),
