@@ -44,7 +44,7 @@ class AllPage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Color.fromARGB(255, 63, 58, 71),
                     borderRadius: BorderRadius.circular(25)),
-                margin: EdgeInsets.only(top: 20),
+                margin: EdgeInsets.only(bottom: 20),
                 child: Center(
                   child: Text(notes[index]),
                 ),
